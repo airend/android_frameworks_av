@@ -3072,10 +3072,10 @@ void MPEG4Writer::Track::writeColrBox() {
     ColorAspects aspects;
     memset(&aspects, 0, sizeof(aspects));
     // TRICKY: using | instead of || because we want to execute all findInt32-s
-    if (mMeta->findInt32(kKeyColorPrimaries, (int32_t*)(void*)&aspects.mPrimaries)
-            | mMeta->findInt32(kKeyTransferFunction, (int32_t*)(void*)&aspects.mTransfer)
-            | mMeta->findInt32(kKeyColorMatrix, (int32_t*)(void*)&aspects.mMatrixCoeffs)
-            | mMeta->findInt32(kKeyColorRange, (int32_t*)(void*)&aspects.mRange)) {
+    if (mMeta->findInt32(kKeyColorPrimaries, (int32_t*)&aspects.mPrimaries)
+            | mMeta->findInt32(kKeyTransferFunction, (int32_t*)&aspects.mTransfer)
+            | mMeta->findInt32(kKeyColorMatrix, (int32_t*)&aspects.mMatrixCoeffs)
+            | mMeta->findInt32(kKeyColorRange, (int32_t*)&aspects.mRange)) {
         int32_t primaries, transfer, coeffs;
         bool fullRange;
         ColorUtils::convertCodecColorAspectsToIsoAspects(
