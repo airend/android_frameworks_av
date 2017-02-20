@@ -124,6 +124,7 @@ LOCAL_SHARED_LIBRARIES += \
         libdl \
         libRScpp \
 
+LOCAL_CFLAGS += -Wno-address-of-packed-member
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wno-error=deprecated-declarations -Wall
 
 # enable experiments only in userdebug and eng builds
