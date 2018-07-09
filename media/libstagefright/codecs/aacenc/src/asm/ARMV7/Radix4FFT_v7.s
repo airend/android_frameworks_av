@@ -28,7 +28,7 @@
 Radix4FFT:
 	stmdb    sp!, {r4 - r11, lr}
 	.save	 {r4 - r11, lr}
-	fstmfdd  sp!, {d8 - d15}
+	vstmdb	 sp!, {d8 - d15}
 	.vsave	 {d8 - d15}
 
 	mov			r1, r1, asr #2
@@ -141,7 +141,7 @@ Radix4FFT_LOOP1_END:
 	bne     			Radix4FFT_LOOP1
 
 Radix4FFT_END:
-	fldmfdd   			sp!, {d8 - d15}
+	vldmia   			sp!, {d8 - d15}
 	ldmia   			sp!, {r4 - r11, pc}
 
 	@ENDP  @ |Radix4FFT|
