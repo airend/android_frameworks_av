@@ -28,7 +28,7 @@
 Radix8First:
 	stmdb     		sp!, {r4 - r11, lr}
 	.save	  		{r4 - r11, lr}
-	fstmfdd   		sp!, {d8 - d15}
+	vstmdb   		sp!, {d8 - d15}
 	.vsave	  		{d8 - d15}
 
 	ldr       		r3, SQRT1_2
@@ -107,7 +107,7 @@ Radix8First_LOOP:
 	bne       			Radix8First_LOOP
 
 Radix8First_END:
-	fldmfdd   sp!, {d8 - d15}
+	vldmia	  sp!, {d8 - d15}
 	ldmia     sp!, {r4 - r11, pc}
 SQRT1_2:
 	.word      0x2d413ccd
@@ -122,7 +122,7 @@ SQRT1_2:
 Radix4First:
 	stmdb     	sp!, {r4 - r11, lr}
 	.save	  	{r4 - r11, lr}
-	fstmfdd   	sp!, {d8 - d15}
+	vstmdb   	sp!, {d8 - d15}
 	.vsave	  	{d8 - d15}
 
 	cmp       	r1, #0
@@ -150,7 +150,7 @@ Radix4First_LOOP:
 	bne       		Radix4First_LOOP
 
 Radix4First_END:
-	fldmfdd   		sp!, {d8 - d15}
+	vldmia   		sp!, {d8 - d15}
 	ldmia    		sp!, {r4 - r11, pc}
 
 	@ENDP  @ |Radix4First|
